@@ -16,19 +16,19 @@
           <div class="form-group">
             <label for="message">message</label>
             <textarea
-                    v-model="message.message"
-                    class="form-control"
-                    id="message"
-                    rows="2" required></textarea>
+              v-model="message.message"
+              class="form-control"
+              id="message"
+              rows="2" required></textarea>
           </div>
           <div class="form-group">
             <label for="imageURL">image url</label>
             <input
-                    v-model="message.imageURL"
-                    type="url"
-                    class="form-control"
-                    id="imageURL"
-                    placeholder="enter url">
+              v-model="message.imageURL"
+              type="url"
+              class="form-control"
+              id="imageURL"
+              placeholder="enter url">
           </div>
           <button type="submit" class="btn btn-primary">Add</button>
         </div>
@@ -64,52 +64,52 @@
 </template>
 
 <script>
-// @ is an alias to /src
-const API_URL = 'http://localhost:4000/messages';
+  // @ is an alias to /src
+  const API_URL = 'http://localhost:4000/messages';
 
-export default {
-  name: 'home',
-  data: () => ({
-    error: '',
-    messages: [],
-    message: {
-      username: '',
-      message: '',
-      imageURL: '',
-    },
-  }),
-  mounted() {
-    fetch(API_URL)
-      .then(response => response.json())
-      .then((result) => {
-        this.messages = result;
-      });
-  },
-  methods: {
-    addMessage() {
-      fetch(API_URL, {
-        method: 'POST',
-        body: JSON.stringify(this.message),
-        headers: {
-          'content-type': 'application/json',
-        },
-      })
+  export default {
+    name: 'home',
+    data: () => ({
+      error: '',
+      messages: [],
+      message: {
+        username: '',
+        message: '',
+        imageURL: '',
+      },
+    }),
+    mounted() {
+      fetch(API_URL)
         .then(response => response.json())
         .then((result) => {
-          if (result.details) {
-            // there was an error...
-            const error = result.details
-              .map(detail => detail.message)
-              .join('. ');
-            this.error = error;
-          } else {
-            this.error = '';
-            this.messages.push(result);
-          }
+          this.messages = result;
         });
     },
-  },
-};
+    methods: {
+      addMessage() {
+        fetch(API_URL, {
+          method: 'POST',
+          body: JSON.stringify(this.message),
+          headers: {
+            'content-type': 'application/json',
+          },
+        })
+          .then(response => response.json())
+          .then((result) => {
+            if (result.details) {
+              // there was an error...
+              const error = result.details
+                .map(detail => detail.message)
+                .join('. ');
+              this.error = error;
+            } else {
+              this.error = '';
+              this.messages.push(result);
+            }
+          });
+      },
+    },
+  };
 
 </script>
 

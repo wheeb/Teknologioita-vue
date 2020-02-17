@@ -10,13 +10,13 @@ const app = express();
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(bodyParser.json());
-
+//for testing if server works
 app.get('/', (req, res) =>{
 	res.json({
-		message: 'asd'
+		message: 'Server working'
 	});
 });
-
+//returns all messages stored in DB
 app.get('/messages', (req, res) => {
 	console.log(req.body);
 	messages.getAll().then((messages) => {
@@ -24,6 +24,7 @@ app.get('/messages', (req, res) => {
 	})
 });
 
+//handles message receiving
 app.post('/messages', (req, res) => {
 	console.log(req.body);
 	messages.create(req.body).then((messages) => {
