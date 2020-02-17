@@ -9,11 +9,16 @@ npm install
 ```
 ## Run
 ```
-node ./index.js
+node .\index.js
 ```
+Server responds at http://localhost:4000/
 
 # Client
 
+## Navigate
+```
+cd .\client\
+```
 ## Project setup
 ```
 npm install
@@ -22,3 +27,4 @@ npm install
 ```
 npm run serve
 ```
+Client responds at http://localhost:8080/
