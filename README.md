@@ -1,6 +1,9 @@
 # Vue project
 Small site where you can upload images. VueJs handling front and node Express server for back.
 
+## Required software
+This program uses MangoDB for storing data. MangoDB Community Server or equivalent must be up and running for this project to work
+
 # Server
 
 ## Project setup
